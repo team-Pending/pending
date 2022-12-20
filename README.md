@@ -1,8 +1,8 @@
-# pending
+# Art focused microblog
 
 
--Shawn Karalash
--Laura Beutler
+- Shawn Karalash
+- Laura Beutler
 - Sam Bensema
-Melissa Goncalves
-
+- Melissa Goncalves
+- Josh Cooley
