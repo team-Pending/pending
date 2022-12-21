@@ -21,6 +21,12 @@
   .header a.logo {
     font-size: 25px;
     font-weight: bold;
+    font-family: 'Ruthie';
+  }
+
+  .header a.logos {
+    font-family: 'Ruthie', serif;
+    font-size: 48px;
   }
   
   /* Change the background color on mouse-over */
