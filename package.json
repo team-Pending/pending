@@ -29,7 +29,8 @@
     "handlebars": "^4.7.7",
     "mysql2": "^2.3.3",
     "passport": "^0.6.0",
-    "sequelize": "^6.27.0"
+    "sequelize": "^6.27.0",
+    "uniqid": "^5.4.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20",
