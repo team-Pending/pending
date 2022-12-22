@@ -1,9 +1,8 @@
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
-const routes = require('./controllers');
 const exphbs = require('express-handlebars');
-const fs = require('fs');
+const routes = require('./controllers');
 const uniqid = require('uniqid');
 
 const sequelize = require('./config/connection');
@@ -34,9 +33,12 @@ app.use(session(sess));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-app.use(routes);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.listen(PORT, () => console.log(`Now listening on Port ${PORT}`));
+app.use(routes);
+
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log(`Now listening on Port ${PORT}`));
+});
