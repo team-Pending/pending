@@ -6,35 +6,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public\assets\css\style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ruthie">
-    <title>Document</title>
+    <title>MediaPhile</title>
 </head>
 <body class="page">
-    <header>
-        <div class="header">
-            <a>
-                <span class="logo">Media</span> 
-                <span class="logos">Phile</span> 
-            </a>
-            <div class="header-right">
-              <a class="active" href="#home">Home</a>
-              <a href="#contact">Contact</a>
-              <a href="#about">About</a>
+  <header>
+    <div class="header">
+      <span>
+        <span class="logo">Media</span>
+        <span class="logos">Phile</span>
+      </span>
+      <div class="header-right">
+        <a class="active" href="#home">Home</a>
+        <a href="#contact">Profile</a>
+        <a href="#about">Logout</a>
+      </div>
+    </div>
+  </header>
+    <!-- New post -->
+    <div class="row mt-4">
+        <div class="col-md-6">     
+          <form class="form new-upload-form">
+            <div class="new-upload">
+                <label for="upload-form" class="new-upload">New Post</label>
+            </div>
+            <div class="form-group">
+              <label for="upload-name">Title:</label>
+              <input class="form-input" type="text" id="upload-name" name="upload-name" />
+            </div>
+            <div class="form-group">
+                <label for="project-desc">Description:</label>
+                <input class="form-input" type="text" id="project-desc" name="project-desc" />
+              </div>
+              <div class="form-group">
+                <label for="file-upload">File Upload:</label>
+                <input class="form-input" type="text" id="file-upload" name="file-upload" />
+              </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      
+        <!-- {{#if projects.length}}
+        <div class="col-md-6 project-list">
+          <h3>Current Projects:</h3>
+      
+          {{#each projects as |project|}}
+          <div class="row mb-2">
+            <div class="col-md-8">
+              <h4><a href="/project/{{project.id}}">{{project.name}}</a></h4>
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-sm btn-danger" data-id="{{project.id}}">DELETE</button>
             </div>
           </div>
-    </header>
-    <!-- New post -->
-<form action="" method="post">
-    <div class="form-group">
-        <label for="text-desc">New Post:</label>
-        <textarea name="text-desc" id="text-desc" cols="30" rows="10" class="form-input"></textarea>
-    </div>
-</form>
+          {{/each}}
+        </div>
+        {{/if}} -->
+      </div>
 
     <!-- My recent posts -->
 
 
-    <footer class ="footer">
-        <p>Be yourself, be kind, be creative, share Media Phile</p>
-    </footer>
+    <footer class="footer">
+        <span>Be yourself, be kind, be creative, share Media</span> 
+        <span class="logos">Phile</span>
+      </footer>
 </body>
 </html>
