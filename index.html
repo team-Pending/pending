@@ -1,55 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ruthie">
-    <link rel="stylesheet" href="public\assets\css\style.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ruthie&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="public\assets\css\style.css">
+  <title>MediaPhile</title>
 </head>
+
 <body class="page">
-    <header>
-        <div class="header">
-            <a>
-                <span class="logo">Media</span> 
-                <span class="logos">Phile</span> 
-            </a href="">
-            <div class="header-right">
-              <a class="active" href="#home">Home</a>
-              <a href="#contact">Profile</a>
-              <a href="#about">Logout</a>
-            </div>
-          </div>
-    </header>
-    <!-- login form -->
-    <form action="" method="post">     
-        <div class="container">
-          <label for="uname"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required>
-      
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
-      
-          <button type="submit">Login</button>
-        </div>
-      </form>
-    <!-- Registration form -->
-    <form action="" method="post">     
-        <div class="container">
-          <label for="uname"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required>
-          <label for="email"><b>Email</b></label>
-          <input type="email" placeholder="Enter Username" name="Email" required>
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
-      
-          <button type="submit">Login</button>
-        </div>
-      </form>
-    <footer class ="footer">
-        <p>Be yourself, be kind, be creative, share Media Phile</p>
-    </footer>
+  <header>
+    <div class="header">
+      <span>
+        <span class="logo">Media</span>
+        <span class="logos">Phile</span>
+      </span>
+      <div class="header-right">
+        <a class="active" href="#home">Home</a>
+        <a href="#contact">Profile</a>
+        <a href="#about">Logout</a>
+      </div>
+    </div>
+  </header>
+  <div class="forms">
+  <!-- login form -->
+  <form action="" method="post" class="column-1">
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <button type="submit">Login</button>
+    </div>
+  </form>
+  <!-- Registration form -->
+  <form action="" method="post" class="column-2">
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="email" name="email" required>
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <button type="submit">Register</button>
+    </div>
+  </form>
+  </div>
+  <footer class="footer">
+    <span>Be yourself, be kind, be creative, share Media</span> 
+    <span class="logos">Phile</span>
+  </footer>
 </body>
+
 </html>
