@@ -1,39 +1,36 @@
-// creates a get method that redirects you to the notes HTML page.
-app.get('/notes', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/notes.html'));
-});
+const express = require('express');
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
+const fs = require('fs');
+const util = require('util');
+const unlinkFile = util.promisify(fs.unlink);
 
+const app = express();
+
+const { uploadFile, getFileStream } = require('../s3');
+
+app.get('/images/:key', (req, res) => {
+  const key = req.params.key;
+  const readStream = getFileStream(key);
+
+  readStream.pipe(res);
+});
 // creates a get function that reads the information in the db.json file and sends it back
 app.get('/api/notes', (req, res) => {
-  fs.readFile('./db/db.json', 'utf-8', (error, data) => {
-    res.send(data);
-  });
+  // need to pull a
 });
 
-// Add notes to the db.json file and sends back the information.
-app.post('/api/notes', (req, res) => {
-  fs.readFile('./db/db.json', 'utf-8', (error, data) => {
-    const notes = JSON.parse(data);
-    notes.push({ ...req.body, id: uniqid() });
-    fs.writeFile('./db/db.json', JSON.stringify(notes), (error, data) => {
-      res.send(req.body);
-    });
-  });
+app.post('/api/image', upload.single('image'), async function (req, res) {
+  const file = req.file;
+  console.log(file);
+  const result = await uploadFile(file);
+  await unlinkFile(file.path);
+  console.log(result);
+  const description = req.body.description;
+  res.send({ imagePath: `/images/${result.key}` });
 });
+// Add notes to the db.json file and sends back the information.
+app.post('/api/notes', (req, res) => {});
 
 // creates a method to delete previously made notes based on their unique id.
-app.delete('/api/notes/:id', (req, res) => {
-  fs.readFile('./db/db.json', 'utf-8', (error, data) => {
-    const notes = JSON.parse(data);
-    const filteredNotes = notes.filter((note) => note.id !== req.params.id);
-    fs.writeFile('./db/db.json', JSON.stringify(filteredNotes), (error, data) => {
-      res.send(req.body);
-    });
-  });
-});
-
-// creates a default get method that sends users to the home page.
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/index.html'));
-});
-
+app.delete('/api/notes/:id', (req, res) => {});
