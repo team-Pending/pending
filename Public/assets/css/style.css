@@ -74,6 +74,10 @@ form {
   clear: both;
   width: 100%;
 }
+.formTitle {
+  text-align: center;
+  font-size:xx-large;
+}
 
 .column-1 {
   width: 45%;
