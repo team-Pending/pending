@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const User = require('../models/User');
-const withAuth = require('../utils/auth')
+const withAuth = require('../utils/auth');
+const Upload = require('../models/Upload');
 
 router.get('/', async (req, res) => {
         res.redirect('/login');
@@ -35,6 +36,19 @@ router.get('/profile', withAuth, async (req, res) => {
         }
       
         res.render('login');
+      });
+
+      router.get('/home', async (req, res) => {
+        // Once user logs in, takes to home page added by lab line 41-51
+      
+        const userData = await Upload.findAll({
+          attributes: { exclude: ['password'] },
+          //NEED ASSISTANCE WITH INCLUDING USER UPLOADS
+          // include: [User]
+        })
+        const users = userData.map(user => user.get({ plain: true }))
+        res.render('home', {users});
+        
       });
       
 module.exports= router;
