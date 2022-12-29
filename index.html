@@ -27,34 +27,36 @@
     </div>
   </header>
   <div class="forms">
-  <!-- login form -->
-  <form action="" method="post" class="column-1">
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+    <!-- login form -->
+    <form action="" method="post" class="column-1">
+      <p class="formTitle">Current User:</p>
+      <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" id="username" placeholder="Enter Username" name="uname" required>
 
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" id="password" placeholder="Enter Password" name="psw" required>
 
-      <button type="submit">Login</button>
-    </div>
-  </form>
-  <!-- Registration form -->
-  <form action="" method="post" class="column-2">
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
-      <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="email" name="email" required>
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+        <button type="submit">Login</button>
+      </div>
+    </form>
+    <!-- Registration form -->
+    <form action="" method="post" class="column-2">
+      <p class="formTitle">New User:</p>
+      <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" id="newUsername" placeholder="Enter Username" name="uname" required>
+        <label for="email"><b>Email</b></label>
+        <input type="text" id="newEmail" placeholder="Enter email" name="email" required>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" id="newPassword" placeholder="Enter Password" name="psw" required>
 
-      <button type="submit">Register</button>
-    </div>
-  </form>
+        <button type="submit">Register</button>
+      </div>
+    </form>
   </div>
   <footer class="footer">
-    <span>Be yourself, be kind, be creative, share Media</span> 
+    <span>Be yourself, be kind, be creative, share Media</span>
     <span class="logos">Phile</span>
   </footer>
 </body>
