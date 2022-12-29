@@ -7,16 +7,18 @@ Upload.init({
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        autoIncrement: true
+        autoIncrement: true,
+        //added for necessity to make work
+        primaryKey: true,
     },
-    user_id: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: 'user',
-            key: 'id',
-            unique: true
-        }
-    },
+    // user_id: {
+    //     type: DataTypes.INTEGER,
+    //     references: {
+    //         model: 'user',
+    //         key: 'id',
+    //         unique: true
+    //     }
+    // },
     title: {
         type: DataTypes.STRING
     },
