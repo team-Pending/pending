@@ -1,6 +1,6 @@
 require('dotenv').config();
 const S3 = require('aws-sdk/clients/s3');
-const gs = require('fs';)
+const gs = require('fs');
 
 const bucketName = process.env.AWS_BUCKET_NAME;
 const bucketRegion =process.env.AWS_BUCKET_REGION;
