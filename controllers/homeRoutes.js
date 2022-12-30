@@ -7,6 +7,11 @@ router.get('/', async (req, res) => {
         res.redirect('/login');
 });
 
+router.get('/upload', async (req, res) => {
+  res.render('upload');
+});
+
+
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
@@ -38,7 +43,7 @@ router.get('/profile', withAuth, async (req, res) => {
         res.render('login');
       });
 
-      router.get('/home', async (req, res) => {
+      router.get('/home', withAuth, async (req, res) => {
         // Once user logs in, takes to home page added by lab line 41-51
       
         const userData = await Upload.findAll({
