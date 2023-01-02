@@ -3,29 +3,36 @@
     <h2>Welcome, {{name}}!</h2>
   </div>
 </div>
+    <div class="row mt-4">
+        <div class="col-md-6">     
+          <form class="new-upload-form">
+            <div class="new-upload">
+                <label for="upload-form" class="new-upload">New Post</label>
+            </div>
+            <div class="form-group">
+              <label for="upload-name">Title:</label>
+              <input class="form-input" type="text" id="upload-name" name="upload-name" />
+            </div>
+            <div class="form-group">
+                <label for="upload-desc">Description:</label>
+                <input class="form-input" type="text" id="upload-desc" name="upload-desc" />
+              </div>
+              <div class="form-group">
+                <label for="file-upload">File Upload:</label>
+                <input class="form-input" type="text" id="file-upload" name="file-upload" />
+              </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
 
-<div class="row mt-4">
-  <div class="col-md-6">
-    <h3>Create a New Project:</h3>
+    <!-- My recent posts -->
+      <div class="upload-list">
 
-    <form class="form new-project-form">
-      <div class="form-group">
-        <label for="project-name">project name:</label>
-        <input class="form-input" type="text" id="project-name" name="project-name" />
       </div>
-      <div class="form-group">
-        <label for="project-funding">needed funding ($):</label>
-        <input class="form-input" type="number" id="project-funding" name="project-funding" />
-      </div>
-      <div class="form-group">
-        <label for="project-desc">description:</label>
-        <textarea class="form-input" id="project-desc" name="project-desc"></textarea>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
-      </div>
-    </form>
-  </div>
+
 
   {{#if projects.length}}
   <div class="col-md-6 project-list">
