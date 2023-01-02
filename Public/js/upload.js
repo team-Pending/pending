@@ -4,11 +4,14 @@ const uploadImageHandler = async (event) => {
   event.preventDefault();
 
   const image = document.querySelector('#fileUpload');
+  console.log(image);
+  const formData = new FormData();
 
-  const response = await fetch('/api/image', {
+  formData.append('image', image);
+
+  const response = await fetch('./api/image', {
     method: 'POST',
-    body: JSON.stringify({ image }),
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'multipart/form-data' },
   });
 };
 

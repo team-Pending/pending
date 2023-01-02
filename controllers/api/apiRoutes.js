@@ -27,6 +27,7 @@ app.post('/image', upload.single('image'), async function (req, res) {
   console.log(result);
   const description = req.body.description;
   res.send({ imagePath: `/images/${result.key}` });
+  return result.key;
 });
 
 // Add notes to the db.json file and sends back the information.
