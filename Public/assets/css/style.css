@@ -1,5 +1,11 @@
 body {
   color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* overflow: hidden makes page not scrollable. */
+  overflow: hidden;
 }
 
 /* Style the header with a grey background and some padding */
@@ -86,6 +92,7 @@ form {
 }
 
 .column-1 {
+  /* flex: auto; */
   width: 45%;
   float: left;
   margin-top: 50px;
@@ -93,6 +100,7 @@ form {
 }
 
 .column-2 {
+  /* flex: auto; */
   width: 45%;
   float: right;
   margin-top: 50px;
@@ -141,13 +149,30 @@ span.psw {
   color: white;
 }
 
-/* Change styles for span on extra small screens */
-@media screen and (max-width: 300px) {
+/* Change styles for span on smaller screens */
+@media screen and (max-width: 1136px) {
   span.psw {
     display: block;
     float: none;
   }
-}
+  .column-1 {
+    width: 100%;
+    float: right;
+    margin-top: 0px;
+    margin-right: 0px;
+  }
+  .column-2 {
+    width: 100%;
+    float: right;
+    margin-top: 0px;
+    margin-right: 0px;
+  }
+  /* to make overflow scrollable at a certain screen size. */
+  body {
+    overflow: scroll;
+  }
+  }
+
 
 .new-upload {
   font-size: 22px;
@@ -155,12 +180,12 @@ span.psw {
 }
 
 .footer {
+  position: absolute;
+  bottom: 0;
   overflow: hidden;
   background-color: #190061;
   padding: 5px 5px;
   color: white;
   text-align: center;
-  position: absolute;
-  bottom: 0;
   width: 100%;
-}
+} 
