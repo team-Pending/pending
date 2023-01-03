@@ -20,16 +20,16 @@ router.post("/", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
-
+console.log(23)
     if (!userData) {
       res
         .status(400)
         .json({ message: "Incorrect email or password, please try again" });
       return;
     }
-
+console.log(30)
     const validPassword = await userData.checkPassword(req.body.password);
-
+console.log(32)
     if (!validPassword) {
       res
         .status(400)
@@ -52,9 +52,11 @@ router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
+      console.log('logged out');
     });
   } else {
     res.status(404).end();
+    return console.log('unable to log out')
   }
 });
 
