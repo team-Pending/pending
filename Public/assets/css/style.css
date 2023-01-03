@@ -9,6 +9,12 @@ body {
   padding: 5px 5px;
 }
 
+#logout {
+  background-color: transparent;
+  width:fit-content;
+  height: auto;
+  padding: 10px 10px;
+}
 /* Style the header links */
 .header a {
   float: left;
