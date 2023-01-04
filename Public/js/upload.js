@@ -1,18 +1,17 @@
-let uploadBTN = document.querySelector('#uploadBTN');
-
 const uploadImageHandler = async (event) => {
-  event.preventDefault();
-
   const image = document.querySelector('#fileUpload');
-  console.log(image);
-  const formData = new FormData();
+  const form = new FormData();
+  form.append('image', image.files[0]);
 
-  formData.append('image', image);
-
-  const response = await fetch('./api/image', {
+  const options = {
     method: 'POST',
-    headers: { 'Content-Type': 'multipart/form-data' },
-  });
+  };
+
+  options.body = form;
+
+  fetch('http://localhost:3001/api/image', options)
+    .then((response) => console.log(response))
+    .catch((err) => console.error(err));
 };
 
 uploadBTN.addEventListener('click', uploadImageHandler);
