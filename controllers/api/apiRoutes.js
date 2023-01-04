@@ -21,13 +21,13 @@ app.get('/api/notes', (req, res) => {
 
 app.post('/image', upload.single('image'), async function (req, res) {
   const file = req.file;
-  console.log(file);
+  console.log('hello world', file);
   const result = await uploadFile(file);
   await unlinkFile(file.path);
-  console.log(result);
+  console.log('goobye world', result);
   const description = req.body.description;
   res.send({ imagePath: `/images/${result.key}` });
-  return result.key;
+  // hardcode path to database here.
 });
 
 // Add notes to the db.json file and sends back the information.
