@@ -22,12 +22,14 @@ app.get('/api/notes', (req, res) => {
 });
 
 app.post('/image', upload.single('image'), async function (req, res) {
-  console.log(req.body)
   const result = await uploadImage(req.file)
-  console.log(result)
   res.send({ imagePath: `/images/${result.key}` });
-  const userData = await Note.create(req.body, result.key);
-  console.log(userData);
+  const userData = await Note.create({
+    user_id: req.session.user_id,
+    title: req.body.title,
+    description: req.body.description,
+    key: result.key,
+  });
 });
 
 // Add notes to the db.json file and sends back the information.

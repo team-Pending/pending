@@ -11,14 +11,6 @@ Note.init({
         //added for necessity to make work
         primaryKey: true,
     },
-    user_id: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: 'user',
-            key: 'id'
-            // unique: true
-        }
-    },
     title: {
         type: DataTypes.STRING
     },
@@ -32,6 +24,13 @@ Note.init({
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: DataTypes.NOW
+    },
+    user_id: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'user',
+            key: 'id'
+        }
     }
 },
 {
