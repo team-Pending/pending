@@ -5,6 +5,7 @@ const fs = require('fs');
 const util = require('util');
 const unlinkFile = util.promisify(fs.unlink);
 const { uploadFile, getFileStream } = require('../s3');
+const uploadImage = require('../../utils/uploadImg');
 
 const app = express();
 
@@ -20,13 +21,9 @@ app.get('/api/notes', (req, res) => {
 });
 
 app.post('/image', upload.single('image'), async function (req, res) {
-  const file = req.file;
-  console.log('hello world', file);
-  const result = await uploadFile(file);
-  await unlinkFile(file.path);
-  console.log('goobye world', result);
-  const description = req.body.description;
+  const result = await uploadImage(req.file)
   res.send({ imagePath: `/images/${result.key}` });
+  return result.key;
   // hardcode path to database here.
 });
 
