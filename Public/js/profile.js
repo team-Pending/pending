@@ -6,7 +6,7 @@ const newUploadHandler = async (event) => {
     const image = document.querySelector('#file-upload').value.trim();
   
     if (title && description) {
-      const response = await fetch(`/api/uploads`, {
+      const response = await fetch(`/api/image`, {
         method: 'POST',
         body: JSON.stringify({ title, description, image }),
         headers: {

@@ -4,8 +4,9 @@ const upload = multer({ dest: 'uploads/' });
 const fs = require('fs');
 const util = require('util');
 const unlinkFile = util.promisify(fs.unlink);
-const { uploadFile, getFileStream } = require('../s3');
+// const { uploadFile, getFileStream } = require('../s3');
 const uploadImage = require('../../utils/uploadImg');
+const Note = require('../../models/Note')
 
 const app = express();
 
@@ -21,10 +22,12 @@ app.get('/api/notes', (req, res) => {
 });
 
 app.post('/image', upload.single('image'), async function (req, res) {
+  console.log(req.body)
   const result = await uploadImage(req.file)
+  console.log(result)
   res.send({ imagePath: `/images/${result.key}` });
-  return result.key;
-  // hardcode path to database here.
+  const userData = await Note.create(req.body, result.key);
+  console.log(userData);
 });
 
 // Add notes to the db.json file and sends back the information.
