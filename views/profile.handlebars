@@ -7,7 +7,7 @@
         <div class="col-md-6">     
           <form class="new-upload-form">
             <div class="new-upload">
-                <label for="upload-form" class="new-upload">New Post</label>
+                <label for="upload-form" class="new-upload">New Note</label>
             </div>
             <div class="form-group">
               <label for="upload-name">Title:</label>
@@ -48,17 +48,17 @@
       </div> 
 
 
-  {{#if projects.length}}
+ {{#if notes.length}}
   <div class="col-md-6 project-list">
     <h3>Current Projects:</h3>
 
-    {{#each projects as |project|}}
+    {{#each notes as |note|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/project/{{project.id}}">{{project.name}}</a></h4>
+        <h4><a href="/note/{{Note.id}}">{{notes.title}}</a></h4>
       </div>
       <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{project.id}}">DELETE</button>
+        <button class="btn btn-sm btn-danger" data-id="{{Note.id}}">DELETE</button>
       </div>
     </div>
     {{/each}}

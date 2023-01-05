@@ -16,3 +16,23 @@
         </div>
 
       </div> 
+
+  {{#if notes.length}}
+  <div class="col-md-6 project-list">
+    <h3>Current Projects:</h3>
+
+    {{#each notes as |note|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/note/{{Note.id}}">{{notes.title}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{Note.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+<script src="./js/profile.js"></script>
