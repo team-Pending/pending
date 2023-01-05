@@ -11,8 +11,6 @@ router.get('/upload', async (req, res) => {
   res.render('upload');
 });
 
-
-
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
   try {
