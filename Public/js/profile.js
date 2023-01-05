@@ -8,18 +8,23 @@ const newUploadHandler = async (event) => {
   if (title && description) {
     const form = new FormData();
     form.append('image', image.files[0]);
-
+    form.append('title', title);
+    form.append('description',description)
+    console.log(Array.from(form))
     const options = {
       method: 'POST',
     };
-
+    
     options.body = form;
-
+    
+    console.log(form)
     fetch('http://localhost:3001/api/image', options)
-      .then((response) => {
+      .then((response) => { 
         console.log(response);
+        
         if (response.ok) {
-          document.location.replace('/profile');
+          
+          // document.location.replace('/profile');
         } else {
           alert('Failed to create upload');
         }
