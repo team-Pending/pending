@@ -189,3 +189,33 @@ span.psw {
   text-align: center;
   width: 100%;
 } 
+
+.upload-list {
+  margin: auto;
+  padding: 30px;
+  justify-content: center;
+}
+
+.note-title {
+  font-size: 30px;
+  text-align: center;
+}
+
+.username {
+  font-size: 15px;
+  text-align: center;
+}
+
+.time {
+  font-size: 15px;
+  text-align: center; 
+}
+
+.note-desc {
+  font-size: 20px;
+  text-align: center;
+}
+
+.image {
+  max-width: 500px;
+}
