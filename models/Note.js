@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Upload extends Model {}
+class Note extends Model {}
 
-Upload.init({
+Note.init({
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -11,18 +11,21 @@ Upload.init({
         //added for necessity to make work
         primaryKey: true,
     },
-    // user_id: {
-    //     type: DataTypes.INTEGER,
-    //     references: {
-    //         model: 'user',
-    //         key: 'id',
-    //         unique: true
-    //     }
-    // },
+    user_id: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'user',
+            key: 'id'
+            // unique: true
+        }
+    },
     title: {
         type: DataTypes.STRING
     },
-    message: {
+    description: {
+        type: DataTypes.STRING
+    },
+    key: {
         type: DataTypes.STRING
     },
     date: {
@@ -36,7 +39,7 @@ Upload.init({
   timestamps: false,
   freezeTableName: true,
   underscored: true,
-  modelName: 'upload',
+  modelName: 'note',
 });
 
-module.exports = Upload;
+module.exports = Note;
