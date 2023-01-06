@@ -1,14 +1,11 @@
-
-
-
 const router = require('express').Router();
 const User = require('../models/User');
 const withAuth = require('../utils/auth');
 const Note = require('../models/note');
 
-router.get('/', async (req, res) => {
-        res.redirect('/login');
-});
+// router.get('/', async (req, res) => {
+//   res.redirect('/login');
+// });
 
 router.get('/upload', async (req, res) => {
   res.render('upload');
@@ -27,13 +24,13 @@ router.get('/profile', withAuth, async (req, res) => {
 
     res.render('profile', {
       ...user,
-      logged_in: true
+      logged_in: true,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
-      
+
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
@@ -45,39 +42,36 @@ router.get('/login', (req, res) => {
 });
 
 // note route
-router.get('/notes', async (req, res) => {
+router.get('/', async (req, res) => {
   console.log('you have entered the twilight zone');
-  debugger
+  debugger;
   try {
     const allNotes = await Note.findAll({
-        
-          attributes: ['key', 'title', 'description', 'date', 'user_id'],
-        
+      attributes: ['key', 'title', 'description', 'date', 'user_id'],
     });
     console.log(allNotes);
     const notes = allNotes.map((note) => note.get({ plain: true }));
     console.log(notes);
-    res.render('note', { notes, 
-      // logged_in: req.session.logged_in 
+    res.render('note', {
+      notes,
+      // logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
-    console.error(err)
+    console.error(err);
   }
 });
 
+// router.get('/home', withAuth, async (req, res) => {
+//   // Once user logs in, takes to home page added by lab line 41-51
 
-router.get('/home', withAuth, async (req, res) => {
-  // Once user logs in, takes to home page added by lab line 41-51
+//   const userData = await Upload.findAll({
+//     attributes: { exclude: ['password'] },
+//     //NEED ASSISTANCE WITH INCLUDING USER UPLOADS
+//     // include: [User]
+//   });
+//   const users = userData.map((user) => user.get({ plain: true }));
+//   res.render('home', { users });
+// });
 
-  const userData = await Upload.findAll({
-    attributes: { exclude: ['password'] },
-    //NEED ASSISTANCE WITH INCLUDING USER UPLOADS
-    // include: [User]
-  })
-  const users = userData.map(user => user.get({ plain: true }))
-  res.render('home', {users});
-  
-});
-      
-module.exports= router;
+module.exports = router;

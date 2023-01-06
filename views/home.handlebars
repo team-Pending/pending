@@ -1,23 +1,38 @@
-<h1>Hello World!</h1>
-
-<!-- Brief description of recent posts by all registered users -->
-{{!-- below is full description of a users post --}}
-<div class="upload-list">
+<!-- create handlebar for when you click on a "note" and it expands so you can see entire note. -->
+  {{#if notes.length}}
+    {{#each notes as |note|}}
+      <div class="upload-list">
         <div class="note">
           <header class="note-title">
-            Test Title
+            {{note.title}}
           <div class="username">
-            username
-            <time class="date" datetime="">Time</time>
+            {{note.user_id}}
+            <time class="date" datetime="">{{note.date}}</time>
           </div>
           </header>
           <div class="note-desc">
-            This is where the words go.
+            {{note.description}}
           </div>
-          <img class="image" src="https://telegra.ph/file/be265fd10e10251245d6b.jpg">
+          <img class="image" src="http://localhost:3001/api/images/{{note.key}}">
         </img>
         </div>
+    {{/each}}
+  {{/if}}
 
       </div> 
+{{!-- 
+  <div class="col-md-6 project-list">
+    <h3>Current Projects:</h3>
 
-      <script src="./js/login.js"></script>
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/note/{{Note.id}}">{{notes.title}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{Note.id}}">DELETE</button>
+      </div>
+    </div>
+  </div>
+</div> --}}
+
+<script src="./js/profile.js"></script>
