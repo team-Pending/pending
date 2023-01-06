@@ -29,7 +29,8 @@ const sess = {
     db: sequelize,
   }),
 };
-
+console.log(sess.secret)
+console.log(process.env.SESSION_SECRET)
 app.use(session(sess));
 
 app.engine('handlebars', hbs.engine);
