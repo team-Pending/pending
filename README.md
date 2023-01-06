@@ -24,11 +24,15 @@ No installation needed, please just click on the following link.
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+After you click on the link above, you will be taken to "Media Phile" main page.  Here you will see what has recently be uploaded to the account.
+![alt text](/Public/assets/images/link.png)
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
+When you click on "Login", you will be taken to a page to Login or Register. You will need to login in order to add or make changes to any of the uploaded items.
+![alt text](/Public/assets/images/login.png)
 
-![alt text](assets/images/screenshot.png)
+If you'd like to deploy an image, you can go to your "Profile" screen.  Here you will be able to see all of your uploads and where you can upload items.
+![alt text](/Public/assets/images/Profile.png)
+
 
 ## Credits
 
