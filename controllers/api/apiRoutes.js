@@ -8,7 +8,6 @@ const { uploadFile, getFileStream } = require('../s3');
 const uploadImage = require('../../utils/uploadImg');
 const Note = require('../../models/Note');
 
-
 router.get('/images/:key', (req, res) => {
   const key = req.params.key;
   const readStream = getFileStream(key);
@@ -18,22 +17,21 @@ router.get('/images/:key', (req, res) => {
 // creates a get function that reads the information in the db.json file and sends it back
 router.get('/notes', async (req, res) => {
   console.log('you have entered the twilight zone');
-  debugger
+  debugger;
   try {
     const allNotes = await Note.findAll({
-        
-          attributes: ['key', 'title', 'description', 'date', 'user_id'],
-        
+      attributes: ['key', 'title', 'description', 'date', 'user_id'],
     });
     console.log(allNotes);
     const notes = allNotes.map((note) => note.get({ plain: true }));
     console.log(notes);
-    res.render('note', { notes, 
-      // logged_in: req.session.logged_in 
+    res.render('note', {
+      notes,
+      // logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
-    console.error(err)
+    console.error(err);
   }
 });
 

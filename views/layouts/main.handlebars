@@ -1,35 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{!-- adding links to handlebars to be called --}}
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ruthie">
-    <link rel="stylesheet" href="/assets/css/style.css">
+  <head>
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    {{! adding links to handlebars to be called }}
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Ruthie' />
+    <link rel='stylesheet' href='/assets/css/style.css' />
     <title>Document</title>
-</head>
-<body class="page">
-    {{!-- adding header info for all pages --}}
+  </head>
+  <body class='page'>
+    {{! adding header info for all pages }}
     <header>
-    <div class="header">
-      <span>
-        <span class="logo">Media</span>
-        <span class="logos">Phile</span>
-      </span>
-      <nav class="header-right">
-        <a class="active" href="#home">Home</a>
-        <a href="#contact">Profile</a>||
-        <button id="logout" type="button" onclick="logoutHandler()">Logout</button>
-      </nav>
-    </div>
-  </header>
+      <div class='header'>
+        <span>
+          <span class='logo'>Media</span>
+          <span class='logos'>Phile</span>
+        </span>
+        <nav class='header-right'>
+          <a class='active' href='/'>Home</a>||
+          {{! <a href="#contact">Profile</a> }}
+          {{! <button id="logout" type="button" onclick="logoutHandler()">Logout</button> }}
+          {{#if logged_in}}
+            <a href='/profile'>profile</a>
+            |
+            <button class='no-button' id='logout'>logout</button>
+          {{else}}
+            <a href='/login'>login</a>
+          {{/if}}
+        </nav>
+      </div>
+    </header>
     {{{body}}}
-    <footer class="footer">
-     <span>Be yourself, be kind, be creative, share Media</span> 
-     <span class="logos">Phile</span>
+    <footer class='footer'>
+      <span>Be yourself, be kind, be creative, share Media</span>
+      <span class='logos'>Phile</span>
     </footer>
-    <script src="./js/logout.js"></script>
-</body>
+    <script src='./js/logout.js'></script>
+  </body>
 </html>
