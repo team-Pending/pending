@@ -3,14 +3,6 @@ const User = require('../models/User');
 const withAuth = require('../utils/auth');
 const Note = require('../models/Note');
 
-// router.get('/', async (req, res) => {
-//   res.redirect('/login');
-// });
-
-router.get('/upload', async (req, res) => {
-  res.render('upload');
-});
-
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
   try {
@@ -43,18 +35,14 @@ router.get('/login', (req, res) => {
 
 // note route
 router.get('/', async (req, res) => {
-  console.log('you have entered the twilight zone');
-  debugger;
   try {
     const allNotes = await Note.findAll({
       attributes: ['key', 'title', 'description', 'date', 'user_id'],
     });
-    console.log(allNotes);
     const notes = allNotes.map((note) => note.get({ plain: true }));
-    console.log(notes);
-    res.render('note', {
+    res.render('home', {
       notes,
-      // logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
