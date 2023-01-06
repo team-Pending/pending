@@ -44,6 +44,29 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+// note route
+router.get('/notes', async (req, res) => {
+  console.log('you have entered the twilight zone');
+  debugger
+  try {
+    const allNotes = await Note.findAll({
+        
+          attributes: ['key', 'title', 'description', 'date', 'user_id'],
+        
+    });
+    console.log(allNotes);
+    const notes = allNotes.map((note) => note.get({ plain: true }));
+    console.log(notes);
+    res.render('note', { notes, 
+      // logged_in: req.session.logged_in 
+    });
+  } catch (err) {
+    res.status(500).json(err);
+    console.error(err)
+  }
+});
+
+
 router.get('/home', withAuth, async (req, res) => {
   // Once user logs in, takes to home page added by lab line 41-51
 

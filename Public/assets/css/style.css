@@ -5,7 +5,7 @@ body {
   flex-direction: column;
   position: relative;
   /* overflow: hidden makes page not scrollable. */
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 /* Style the header with a grey background and some padding */

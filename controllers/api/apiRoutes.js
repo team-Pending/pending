@@ -1,40 +1,43 @@
-const express = require('express');
+const router = require('express').Router();
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
 const fs = require('fs');
 const util = require('util');
 const unlinkFile = util.promisify(fs.unlink);
-// const { uploadFile, getFileStream } = require('../s3');
+const { uploadFile, getFileStream } = require('../s3');
 const uploadImage = require('../../utils/uploadImg');
 const Note = require('../../models/Note');
 
-const app = express();
 
-app.get('/images/:key', (req, res) => {
+router.get('/images/:key', (req, res) => {
   const key = req.params.key;
   const readStream = getFileStream(key);
 
   readStream.pipe(res);
 });
 // creates a get function that reads the information in the db.json file and sends it back
-app.get('/notes', async (req, res) => {
+router.get('/notes', async (req, res) => {
   console.log('you have entered the twilight zone');
+  debugger
   try {
     const allNotes = await Note.findAll({
-      attributes: ['key', 'title', 'description', 'date', 'user_id'],
-      where: { id: true },
-      order: '"date" DESC',
+        
+          attributes: ['key', 'title', 'description', 'date', 'user_id'],
+        
     });
     console.log(allNotes);
     const notes = allNotes.map((note) => note.get({ plain: true }));
     console.log(notes);
-    res.render('note', { notes, logged_in: req.session.logged_in });
+    res.render('note', { notes, 
+      // logged_in: req.session.logged_in 
+    });
   } catch (err) {
     res.status(500).json(err);
+    console.error(err)
   }
 });
 
-app.post('/image', upload.single('image'), async function (req, res) {
+router.post('/image', upload.single('image'), async function (req, res) {
   const result = await uploadImage(req.file);
   res.send({ imagePath: `/images/${result.key}` });
   const userData = await Note.create({
@@ -46,8 +49,8 @@ app.post('/image', upload.single('image'), async function (req, res) {
 });
 
 // creates a method to delete previously made notes based on their unique id.
-app.delete('/api/notes/:id', (req, res) => {
-  app.delete('/api/notes/:id', async (req, res) => {
+router.delete('/api/notes/:id', (req, res) => {
+  router.delete('/api/notes/:id', async (req, res) => {
     res.status(200);
     try {
       const postData = await Post.destroy({
@@ -69,7 +72,7 @@ app.delete('/api/notes/:id', (req, res) => {
     }
   });
 
-  module.exports = app;
+  module.exports = router;
 
   const deletePhoto = async (req) => {
     const key = req.params.key;
@@ -84,4 +87,4 @@ app.delete('/api/notes/:id', (req, res) => {
   exports.deletePhoto = deletePhoto;
 });
 
-module.exports = app;
+module.exports = router;
