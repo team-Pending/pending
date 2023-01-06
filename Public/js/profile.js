@@ -48,7 +48,8 @@ const delButtonHandler = async (event) => {
     }
   }
 };
-
-document.querySelector('.new-upload-form').addEventListener('submit', newUploadHandler);
+const newUploadFormElement = document.querySelector('.new-upload-form');
+console.log(newUploadFormElement)
+newUploadFormElement.addEventListener('submit', newUploadHandler);
 
 document.querySelector('.upload-list').addEventListener('click', delButtonHandler);
