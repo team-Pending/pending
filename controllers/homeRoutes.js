@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const User = require('../models/User');
 const withAuth = require('../utils/auth');
-const Note = require('../models/note');
+const Note = require('../models/Note');
 
 // router.get('/', async (req, res) => {
 //   res.redirect('/login');
