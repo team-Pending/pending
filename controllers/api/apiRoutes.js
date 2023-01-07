@@ -30,23 +30,24 @@ router.post('/image', upload.single('image'), async function (req, res) {
 router.delete('/notes/:key', async (req, res) => {
   console.log('begin ' + req.params + ' end');
   try {
+    debugger;
     console.log(req.params.key + ' this is the key you destroyed');
     const noteData = await Note.destroy({
       where: {
         key: req.params.key,
       },
     });
-    // deletePhoto(req.params.key);
+    deletePhoto(req.params.key);
 
     if (!noteData) {
       res.status(404).json({ message: 'No post found with this id!' });
       return;
     }
 
-    res.status(200).json(postData);
+    res.status(200).json(noteData);
   } catch (err) {
     res.status(500).json(err);
-    console.error(err);
+    console.log(err);
   }
 });
 

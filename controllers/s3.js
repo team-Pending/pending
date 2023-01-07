@@ -43,6 +43,9 @@ const deletePhoto = async (key) => {
     Key: key,
   };
 
-  return S3.send(new DeleteObjectCommand(deleteParams));
+  return s3.deleteObject(deleteParams, function (err, data) {
+    if (err) console.log(err, err.stack);
+    else console.log(data);
+  });
 };
 exports.deletePhoto = deletePhoto;
