@@ -35,6 +35,7 @@ router.delete('/api/notes/:id', async (req, res) => {
         key: req.params.key,
       },
     });
+    // deletePhoto(req.params.key);
 
     if (!noteData) {
       res.status(404).json({ message: 'No post found with this id!' });
