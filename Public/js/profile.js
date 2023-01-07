@@ -9,21 +9,20 @@ const newUploadHandler = async (event) => {
     const form = new FormData();
     form.append('image', image.files[0]);
     form.append('title', title);
-    form.append('description',description)
-    console.log(Array.from(form))
+    form.append('description', description);
+    console.log(Array.from(form));
     const options = {
       method: 'POST',
     };
-    
+
     options.body = form;
-    
-    console.log(form)
+
+    console.log(form);
     fetch('http://localhost:3001/api/image', options)
-      .then((response) => { 
+      .then((response) => {
         console.log(response);
-        
+
         if (response.ok) {
-          
           // document.location.replace('/profile');
         } else {
           alert('Failed to create upload');
@@ -37,8 +36,9 @@ const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
 
-    const response = await fetch(`/api/uploads/${id}`, {
+    const response = await fetch(`/api/notes/${id}`, {
       method: 'DELETE',
+      key: id,
     });
 
     if (response.ok) {
@@ -49,7 +49,7 @@ const delButtonHandler = async (event) => {
   }
 };
 const newUploadFormElement = document.querySelector('.new-upload-form');
-console.log(newUploadFormElement)
+console.log(newUploadFormElement);
 newUploadFormElement.addEventListener('submit', newUploadHandler);
-
-document.querySelector('.upload-list').addEventListener('click', delButtonHandler);
+const delButtonHandlerElement = document.querySelector('.btn-danger');
+delButtonHandlerElement.addEventListener('click', delButtonHandler);
