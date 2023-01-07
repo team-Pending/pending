@@ -27,9 +27,10 @@ router.post('/image', upload.single('image'), async function (req, res) {
 });
 
 // creates a method to delete previously made notes based on their unique id.
-router.delete('/api/notes/:id', async (req, res) => {
+router.delete('/notes/:key', async (req, res) => {
+  console.log('begin ' + req.params + ' end');
   try {
-    console.log(req.params.key + 'this is the key you destroyed');
+    console.log(req.params.key + ' this is the key you destroyed');
     const noteData = await Note.destroy({
       where: {
         key: req.params.key,
@@ -45,6 +46,7 @@ router.delete('/api/notes/:id', async (req, res) => {
     res.status(200).json(postData);
   } catch (err) {
     res.status(500).json(err);
+    console.error(err);
   }
 });
 

@@ -24,6 +24,7 @@ const newUploadHandler = async (event) => {
 
         if (response.ok) {
           // document.location.replace('/profile');
+          alert('successfully uploaded');
         } else {
           alert('Failed to create upload');
         }
