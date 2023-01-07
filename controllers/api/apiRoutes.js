@@ -4,7 +4,7 @@ const upload = multer({ dest: 'uploads/' });
 const fs = require('fs');
 const util = require('util');
 const unlinkFile = util.promisify(fs.unlink);
-const { uploadFile, getFileStream } = require('../s3');
+const { uploadFile, getFileStream, deletePhoto } = require('../s3');
 const uploadImage = require('../../utils/uploadImg');
 const Note = require('../../models/Note');
 
@@ -27,42 +27,24 @@ router.post('/image', upload.single('image'), async function (req, res) {
 });
 
 // creates a method to delete previously made notes based on their unique id.
-router.delete('/api/notes/:id', (req, res) => {
-  router.delete('/api/notes/:id', async (req, res) => {
-    res.status(200);
-    try {
-      const postData = await Post.destroy({
-        where: {
-          id: req.params.id,
-          user_id: req.session.user_id,
-        },
-      });
-      deletePhoto(req);
+router.delete('/api/notes/:id', async (req, res) => {
+  try {
+    console.log(req.params.key + 'this is the key you destroyed');
+    const noteData = await Note.destroy({
+      where: {
+        key: req.params.key,
+      },
+    });
 
-      if (!postData) {
-        res.status(404).json({ message: 'No post found with this id!' });
-        return;
-      }
-
-      res.status(200).json(postData);
-    } catch (err) {
-      res.status(500).json(err);
+    if (!noteData) {
+      res.status(404).json({ message: 'No post found with this id!' });
+      return;
     }
-  });
 
-  module.exports = router;
-
-  const deletePhoto = async (req) => {
-    const key = req.params.key;
-
-    const deleteParams = {
-      Bucket: bucketName,
-      Key: key,
-    };
-
-    return S3.send(new DeleteObjectCommand(deleteParams));
-  };
-  exports.deletePhoto = deletePhoto;
+    res.status(200).json(postData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;

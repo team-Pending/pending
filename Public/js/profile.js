@@ -35,18 +35,17 @@ const newUploadHandler = async (event) => {
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
-    // const {deletePhoto} = require('../controllers/s3');
-    // deletePhoto(id);
 
-    //   const response = await fetch(`/api/notes/${id}`, {
-    //     method: 'DELETE',
-    //   });
+    const response = await fetch(`/api/notes/${id}`, {
+      method: 'DELETE',
+      key: id,
+    });
 
-    //   if (response.ok) {
-    //     document.location.replace('/profile');
-    //   } else {
-    //     alert('Failed to delete upload');
-    //   }
+    if (response.ok) {
+      document.location.replace('/profile');
+    } else {
+      alert('Failed to delete upload');
+    }
   }
 };
 const newUploadFormElement = document.querySelector('.new-upload-form');
