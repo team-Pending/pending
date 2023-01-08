@@ -34,8 +34,8 @@
     <h3>Current Projects:</h3>
     {{#each notes as |note|}}
     <div class="match-form">
-
         <h4>{{note.title}}</h4>
+        <img class="image" src="https://mediaphile.herokuapp.com/api/images/{{note.key}}">
         <button class="btn btn-sm btn-danger" data-id="{{note.key}}">DELETE</button>
     </div>
     {{/each}}
