@@ -36,3 +36,16 @@ function getFileStream(fileKey) {
   return s3.getObject(downloadParams).createReadStream();
 }
 exports.getFileStream = getFileStream;
+
+const deletePhoto = async (key) => {
+  const deleteParams = {
+    Bucket: bucketName,
+    Key: key,
+  };
+
+  return s3.deleteObject(deleteParams, function (err, data) {
+    if (err) console.log(err, err.stack);
+    else console.log(data);
+  });
+};
+exports.deletePhoto = deletePhoto;

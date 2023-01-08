@@ -11,12 +11,21 @@ router.get('/profile', withAuth, async (req, res) => {
       attributes: { exclude: ['password'] },
       // include: [{ model: Upload }],
     });
-
+    const allNotes = await Note.findAll({
+      where: {
+        user_id: req.session.user_id,
+      },
+      attributes: ['key', 'title', 'description', 'date', 'user_id'],
+    });
+    console.log(allNotes);
+    const notes = allNotes.map((note) => note.get({ plain: true }));
+    console.log(notes);
     const user = userData.get({ plain: true });
-
+    console.log(user);
     res.render('profile', {
       ...user,
       logged_in: true,
+      notes,
     });
   } catch (err) {
     res.status(500).json(err);

@@ -17,7 +17,7 @@ body {
 
 #logout {
   background-color: transparent;
-  width:fit-content;
+  width: fit-content;
   height: auto;
   padding: 10px 10px;
 }
@@ -81,14 +81,14 @@ form {
 }
 
 .forms {
-  content: "";
+  content: '';
   display: table;
   clear: both;
   width: 100%;
 }
 .formTitle {
   text-align: center;
-  font-size:xx-large;
+  font-size: xx-large;
 }
 
 .column-1 {
@@ -108,8 +108,8 @@ form {
 }
 
 /* Full-width inputs */
-input[type=text],
-input[type=password] {
+input[type='text'],
+input[type='password'] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -137,6 +137,18 @@ button:hover {
 /* Add padding to containers */
 .container {
   padding: 16px;
+}
+
+.col-md-2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.col-md-4 {
+  display: flex;
+}
+.col-md-8 {
+  display: flex;
 }
 
 /* The "Forgot password" text */
@@ -171,8 +183,7 @@ span.psw {
   body {
     overflow: scroll;
   }
-  }
-
+}
 
 .new-upload {
   font-size: 22px;
@@ -188,7 +199,7 @@ span.psw {
   color: white;
   text-align: center;
   width: 100%;
-} 
+}
 
 .upload-list {
   margin: auto;
@@ -208,7 +219,7 @@ span.psw {
 
 .time {
   font-size: 15px;
-  text-align: center; 
+  text-align: center;
 }
 
 .note-desc {
