@@ -4,7 +4,7 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
-  margin-bottom: 55px;
+  -bottom: 55px;
 }
 
 /* Style the header with a grey background and some padding */
@@ -149,7 +149,7 @@ button:hover {
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   overflow: hidden;
   background-color: #190061;
