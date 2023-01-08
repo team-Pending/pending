@@ -16,7 +16,9 @@ router.get('/images/:key', (req, res) => {
 });
 
 router.post('/image', upload.single('image'), async function (req, res) {
+  console.log("started");
   const result = await uploadImage(req.file);
+  console.log(result);
   res.send({ imagePath: `/images/${result.key}` });
   const userData = await Note.create({
     user_id: req.session.user_id,
@@ -24,7 +26,8 @@ router.post('/image', upload.single('image'), async function (req, res) {
     description: req.body.description,
     key: result.key,
   });
-  // res.status(200).json(userData)
+  console.log(userData);
+  console.log(res)
 });
 
 // creates a method to delete previously made notes based on their unique id.

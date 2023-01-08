@@ -1,11 +1,11 @@
 
 const newUploadHandler = async (event) => {
   event.preventDefault();
-
+console.log("in function")
   const title = document.querySelector('#upload-name').value.trim();
   const description = document.querySelector('#upload-desc').value.trim();
   const image = document.querySelector('#file-upload');
-
+console.log(title)
   if (title && description) {
     const form = new FormData();
     form.append('image', image.files[0]);
@@ -36,24 +36,25 @@ const newUploadHandler = async (event) => {
   }
 };
 
-// const delButtonHandler = async (event) => {
-//   if (event.target.hasAttribute('data-id')) {
-//     const id = event.target.getAttribute('data-id');
+const delButtonHandler = async (event) => {
+  if (event.target.hasAttribute('data-id')) {
+    const id = event.target.getAttribute('data-id');
 
     const response = await fetch(`/api/notes/${id}`, {
       method: 'DELETE',
       key: id,
     });
 
-//     if (response.ok) {
-//       document.location.replace('/profile');
-//     } else {
-//       alert('Failed to delete upload');
-//     }
-//   }
-// };
+    if (response.ok) {
+      document.location.replace('/profile');
+    } else {
+      alert('Failed to delete upload');
+    }
+  }
+};
+
 const newUploadFormElement = document.querySelector('.new-upload-form');
-console.log(newUploadFormElement);
+console.log("event");
 newUploadFormElement.addEventListener('submit', newUploadHandler);
 const delButtonHandlerElement = document.querySelector('.btn-danger');
 delButtonHandlerElement.addEventListener('click', delButtonHandler);
