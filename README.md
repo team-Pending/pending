@@ -10,17 +10,10 @@ This app allows the public to be able to share their creativity on a public foru
 
 Some of the things we learned during our project were how to work with handlebars, Huroku, models, databases, seeds, routes. 
 
-## Requirements
-
-<!-- * Be deployed using Heroku (with data).
-
-* Have a polished UI. -->
-
-<!-- * Have a professional README (with unique name, description, technologies used, screenshot, and link to deployed application).  -->
-
 ## Installation
 
-No installation needed, please just click on the following link.
+No installation needed, please just click on the following link.<br>
+[MediaPhile](https://mediaphile.herokuapp.com/)
 
 ## Usage
 
@@ -32,6 +25,9 @@ When you click on "Login", you will be taken to a page to Login or Register. You
 
 If you'd like to deploy an image, you can go to your "Profile" screen.  Here you will be able to see all of your uploads and where you can upload items.
 ![alt text](/Public/assets/images/Profile.png)
+
+If you made a mistake when uploading your image, there is a delete button you can use to remove your work.
+![alt text](/Public/assets/images/Delete.png)
 
 
 ## Credits
