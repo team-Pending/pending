@@ -19,7 +19,7 @@ const newUploadHandler = async (event) => {
     options.body = form;
     
     console.log(form)
-    fetch('http://localhost:3001/api/image', options)
+    fetch('https://mediaphile.herokuapp.com/api/image', options)
       .then((response) => { 
         console.log(response);
         
