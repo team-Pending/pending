@@ -77,7 +77,9 @@ span.logos {
 form {
   border: 3px solid #f1f1f1;
   width: 30%;
+  border-radius: 10px;
   margin: auto;
+  padding: 5px;
 }
 
 .forms {
@@ -126,7 +128,26 @@ button {
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: 100px;
+}
+
+.project-list{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: solid white; */
+}
+.match-form{
+  border: 3px solid #f1f1f1;
+  width: 30%;
+  border-radius: 10px;
+  margin: auto;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 /* Add a hover effect for buttons */

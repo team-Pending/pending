@@ -33,13 +33,10 @@
   <div class="col-md-6 project-list">
     <h3>Current Projects:</h3>
     {{#each notes as |note|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
+    <div class="match-form">
+
         <h4>{{note.title}}</h4>
-      </div>
-      <div class="col-md-4">
         <button class="btn btn-sm btn-danger" data-id="{{note.key}}">DELETE</button>
-      </div>
     </div>
     {{/each}}
   </div>
