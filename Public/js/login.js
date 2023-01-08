@@ -9,7 +9,7 @@ console.log("login")
 
   if (email && password) {
     // Send a POST request to the API endpoint
-    console.log(email, password);
+
     const response = await fetch('/user/login', {
       method: 'POST',
       body: JSON.stringify({ email, password }),

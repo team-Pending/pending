@@ -131,7 +131,7 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* border: solid white; */
+  width: 100%;
 }
 .match-form{
   border: 3px solid #f1f1f1;
