@@ -131,7 +131,7 @@ button {
   border: 3px solid #f1f1f1;
   width: 30%;
   border-radius: 10px;
-  margin: auto;
+  margin-bottom: 75px;
   padding: 5px;
   display: flex;
   align-items: center;
@@ -163,7 +163,7 @@ button:hover {
     border: 3px solid #f1f1f1; 
     width: 30%;
     border-radius: 10px;
-    margin: auto;
+    margin-bottom: 60px;
     padding: 5px;
     display: flex;
     align-items: center;
