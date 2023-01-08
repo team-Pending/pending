@@ -10,19 +10,19 @@ const newUploadHandler = async (event) => {
     const form = new FormData();
     form.append('image', image.files[0]);
     form.append('title', title);
-    form.append('description',description)
-    console.log(Array.from(form))
+    form.append('description', description);
+    console.log(Array.from(form));
     const options = {
       method: 'POST',
     };
-    
+
     options.body = form;
     
     console.log(form)
     fetch('https://mediaphile.herokuapp.com/api/image', options)
       .then((response) => { 
         console.log(response);
-        
+
         if (response.ok) {
           
           alert("Success!")
@@ -40,9 +40,10 @@ const newUploadHandler = async (event) => {
 //   if (event.target.hasAttribute('data-id')) {
 //     const id = event.target.getAttribute('data-id');
 
-//     const response = await fetch(`/api/uploads/${id}`, {
-//       method: 'DELETE',
-//     });
+    const response = await fetch(`/api/notes/${id}`, {
+      method: 'DELETE',
+      key: id,
+    });
 
 //     if (response.ok) {
 //       document.location.replace('/profile');
@@ -52,7 +53,7 @@ const newUploadHandler = async (event) => {
 //   }
 // };
 const newUploadFormElement = document.querySelector('.new-upload-form');
-console.log(newUploadFormElement)
+console.log(newUploadFormElement);
 newUploadFormElement.addEventListener('submit', newUploadHandler);
-
-// document.querySelector('.upload-list').addEventListener('click', delButtonHandler);
+const delButtonHandlerElement = document.querySelector('.btn-danger');
+delButtonHandlerElement.addEventListener('click', delButtonHandler);
