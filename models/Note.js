@@ -21,7 +21,10 @@ Note.init({
         type: DataTypes.STRING
     },
     date: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
+        get: function () {
+            return this.getDataValue('date').toLocaleDateString('en-US', {});
+          },
         allowNull: false,
         defaultValue: DataTypes.NOW
     },
