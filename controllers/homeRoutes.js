@@ -2,6 +2,7 @@ const router = require('express').Router();
 const User = require('../models/User');
 const withAuth = require('../utils/auth');
 const Note = require('../models/Note');
+const sequelize = require('../config/connection');
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {

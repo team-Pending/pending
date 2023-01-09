@@ -1,49 +1,46 @@
-<div class="row">
-  <div class="col-auto">
+<div class='row'>
+  <div class='col-auto'>
     <h2>Welcome, {{username}}!</h2>
   </div>
 </div>
-    <div class="row mt-4">
-        <div class="col-md-6">     
-          <form class="new-upload-form">
-            <div class="new-upload">
-                <label for="upload-form" class="new-upload">New Note</label>
-            </div>
-            <div class="form-group">
-              <label for="upload-name">Title:</label>
-              <input class="form-input" type="text" id="upload-name" name="upload-name" />
-            </div>
-            <div class="form-group">
-                <label for="upload-desc">Description:</label>
-                <input class="form-input" type="text" id="upload-desc" name="upload-desc" />
-              </div>
-              <div class="form-group">
-                <label for="file-upload">File Upload:</label>
-                <input class="form-input" type="file" id="file-upload" name="file-upload" />
-              </div>
-            <div class="form-group">
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-          </form>
-        </div>
+<div class='row mt-4'>
+  <div class='col-md-6'>
+    <form class='new-upload-form'>
+      <div class='new-upload'>
+        <label for='upload-form' class='new-upload'>New Note</label>
       </div>
-
-
- {{#if notes.length}}
-  <div class="col-md-6 project-list">
-    <h3>Current Projects:</h3>
-    {{#each notes as |note|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4>{{note.title}}</h4>
+      <div class='form-group'>
+        <label for='upload-name'>Title:</label>
+        <input class='form-input' type='text' id='upload-name' name='upload-name' />
       </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{note.key}}">DELETE</button>
+      <div class='form-group'>
+        <label for='upload-desc'>Description:</label>
+        <input class='form-input' type='text' id='upload-desc' name='upload-desc' />
       </div>
-    </div>
-    {{/each}}
+      <div class='form-group'>
+        <label for='file-upload'>File Upload:</label>
+        <input class='form-input' type='file' id='file-upload' name='file-upload' />
+      </div>
+      <div class='form-group'>
+        <button type='submit' class='btn btn-primary'>Submit</button>
+      </div>
+    </form>
   </div>
+</div>
+
+<div class='note-container'>
+  {{#if notes.length}}
+    <div class='project-list'>
+      <h3>Current Projects:</h3>
+      {{#each notes as |note|}}
+        <div class='match-form'>
+          <h4>{{note.title}}</h4>
+          <img class='image' src='http://localhost:3001/api/images/{{note.key}}' />
+          <button class='btn btn-sm btn-danger' data-id='{{note.key}}'>DELETE</button>
+        </div>
+      {{/each}}
+    </div>
   {{/if}}
 </div>
 
-<script src="./js/profile.js"></script>
+<script src='./js/profile.js'></script>
