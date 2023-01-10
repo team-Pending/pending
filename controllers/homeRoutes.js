@@ -47,7 +47,7 @@ router.get('/', async (req, res) => {
   try {
     const allNotes = await Note.findAll({
       attributes: ['key', 'title', 'description', 'date', 'user_id'],
-      order: [['KEY', 'DESC']]
+      order: [['key', 'DESC']]
     });
     const notes = allNotes.map((note) => note.get({ plain: true }));
     res.render('home', {
