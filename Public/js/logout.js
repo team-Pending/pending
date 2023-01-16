@@ -7,3 +7,4 @@ const logoutHandler = async(event) => {
         alert(response.statusText);
     }
 }
+
