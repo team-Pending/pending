@@ -16,9 +16,7 @@ router.get('/images/:key', (req, res) => {
 });
 
 router.post('/image', upload.single('image'), async function (req, res) {
-  console.log("started");
   const result = await uploadImage(req.file);
-  console.log(result);
   res.send({ imagePath: `/images/${result.key}` });
   const userData = await Note.create({
     user_id: req.session.user_id,

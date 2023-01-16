@@ -2,7 +2,6 @@ const router = require('express').Router();
 const User = require('../models/User');
 const withAuth = require('../utils/auth');
 const Note = require('../models/Note');
-const sequelize = require('../config/connection');
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
@@ -18,11 +17,8 @@ router.get('/profile', withAuth, async (req, res) => {
       },
       attributes: ['key', 'title', 'description', 'date', 'user_id'],
     });
-    console.log(allNotes);
     const notes = allNotes.map((note) => note.get({ plain: true }));
-    console.log(notes);
     const user = userData.get({ plain: true });
-    console.log(user);
     res.render('profile', {
       ...user,
       logged_in: true,
@@ -48,6 +44,7 @@ router.get('/', async (req, res) => {
   try {
     const allNotes = await Note.findAll({
       attributes: ['key', 'title', 'description', 'date', 'user_id'],
+      order: [['key', 'DESC']]
     });
     const notes = allNotes.map((note) => note.get({ plain: true }));
     res.render('home', {

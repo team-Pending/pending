@@ -263,13 +263,13 @@ span.psw {
   font-size: 28px;
   font-weight: bold;
 }
-
 .close:hover,
 .close:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
 }
+
 /* Change styles for span on smaller screens */
 @media screen and (max-width: 1136px) {
   span.psw {
