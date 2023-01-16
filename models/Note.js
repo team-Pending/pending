@@ -3,13 +3,11 @@ const sequelize = require('../config/connection');
 
 class Note extends Model {}
 
-Note.init(
-  {
+Note.init({
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       autoIncrement: true,
-      //added for necessity to make work
       primaryKey: true,
     },
     title: {
@@ -23,6 +21,9 @@ Note.init(
     },
     date: {
       type: DataTypes.DATEONLY,
+      get: function () {
+        return this.getDataValue('date').toLocaleDateString('en-US', {});
+      },
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
@@ -40,7 +41,6 @@ Note.init(
     freezeTableName: true,
     underscored: true,
     modelName: 'note',
-  }
-);
+});
 
 module.exports = Note;
