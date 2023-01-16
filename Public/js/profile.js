@@ -1,3 +1,20 @@
+// modal
+var modal = document.getElementById("mymodal");
+var span = document.getElementsByClassName("close");
+
+function showModal() {
+    modal.style.display="block";
+}
+
+span.onclick = function() {
+    modal.style.display = 'none';
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
 
 const newUploadHandler = async (event) => {
   event.preventDefault();
@@ -19,14 +36,14 @@ console.log(title)
     options.body = form;
     
     console.log(form)
-    fetch('https://mediaphile.herokuapp.com/api/image', options)
+    fetch('http://localhost:3001/api/image', options)
+    // fetch('https://mediaphile.herokuapp.com/api/image', options)
       .then((response) => { 
         console.log(response);
 
         if (response.ok) {
           
-          alert("Success!")
-          console.log("success")
+          showModal();
           document.replace('/')
         } else {
           alert('Failed to create upload');
@@ -46,6 +63,7 @@ const delButtonHandler = async (event) => {
     });
 
     if (response.ok) {
+      showModal()
       document.location.replace('/profile');
     } else {
       alert('Failed to delete upload');
