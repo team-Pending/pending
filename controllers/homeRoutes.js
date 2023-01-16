@@ -17,11 +17,8 @@ router.get('/profile', withAuth, async (req, res) => {
       },
       attributes: ['key', 'title', 'description', 'date', 'user_id'],
     });
-    console.log(allNotes);
     const notes = allNotes.map((note) => note.get({ plain: true }));
-    console.log(notes);
     const user = userData.get({ plain: true });
-    console.log(user);
     res.render('profile', {
       ...user,
       logged_in: true,

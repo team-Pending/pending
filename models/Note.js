@@ -8,7 +8,6 @@ Note.init({
         type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        //added for necessity to make work
         primaryKey: true,
     },
     title: {
