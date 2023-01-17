@@ -1,15 +1,14 @@
 // modal
-var modal = document.getElementById('mymodal');
-var span = document.getElementsByClassName('close')[0];
-var btn = document.getElementById('myBtn');
+var modal = document.getElementById("mymodal");
+var span = document.getElementsByClassName("close")[0];
 
 btn.onclick = function () {
   modal.style.display = 'block';
 };
 
-span.onclick = function () {
-  modal.style.display = 'none';
-};
+function showModal() { 
+  modal.style.display="block";
+}
 
 window.onclick = function (event) {
   if (event.target == modal) {
