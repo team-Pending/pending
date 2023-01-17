@@ -1,30 +1,49 @@
+// modal
+var modal = document.getElementById("mymodal");
+var span = document.getElementsByClassName("close")[0];
+var btn = document.getElementById("myBtn");
+
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+    modal.style.display = 'none';
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
+
 const newUploadHandler = async (event) => {
   event.preventDefault();
-
   const title = document.querySelector('#upload-name').value.trim();
   const description = document.querySelector('#upload-desc').value.trim();
   const image = document.querySelector('#file-upload');
-
   if (title && description) {
     const form = new FormData();
     form.append('image', image.files[0]);
     form.append('title', title);
     form.append('description', description);
-    console.log(Array.from(form));
     const options = {
       method: 'POST',
     };
 
     options.body = form;
-
-    console.log(form);
+    
+    // local for testing, this branch should be on local by default
     fetch('http://localhost:3001/api/image', options)
-      .then((response) => {
-        console.log(response);
+    // heroku for live
+    // fetch('https://mediaphile.herokuapp.com/api/image', options)
+      .then((response) => { 
 
         if (response.ok) {
-          // document.location.replace('/profile');
-          alert('successfully uploaded');
+          
+          showModal();
+          document.replace('/')
         } else {
           alert('Failed to create upload');
         }
@@ -43,14 +62,15 @@ const delButtonHandler = async (event) => {
     });
 
     if (response.ok) {
+      showModal()
       document.location.replace('/profile');
     } else {
       alert('Failed to delete upload');
     }
   }
 };
+
 const newUploadFormElement = document.querySelector('.new-upload-form');
-console.log(newUploadFormElement);
 newUploadFormElement.addEventListener('submit', newUploadHandler);
 const delButtonHandlerElement = document.querySelector('.btn-danger');
 delButtonHandlerElement.addEventListener('click', delButtonHandler);

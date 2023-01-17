@@ -22,16 +22,24 @@
         <input class='form-input' type='file' id='file-upload' name='file-upload' />
       </div>
       <div class='form-group'>
-        <button type='submit' class='btn btn-primary'>Submit</button>
+        <button type='submit' id="myBtn" class='btn btn-primary'>Submit</button>
       </div>
     </form>
   </div>
 </div>
 
+    {{!-- success modal --}}
+    <div id="mymodal" class="modal">
+      <div class="modal-content">
+        <span class="close">X
+        </span>
+          <p>Success!</p>
+      </div>
+    </div>
+
 <div class='note-container'>
   {{#if notes.length}}
     <div class='project-list'>
-      <h3>Current Projects:</h3>
       {{#each notes as |note|}}
         <div class='match-form'>
           <h4>{{note.title}}</h4>

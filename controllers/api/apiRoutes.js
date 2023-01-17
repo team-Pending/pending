@@ -24,6 +24,8 @@ router.post('/image', upload.single('image'), async function (req, res) {
     description: req.body.description,
     key: result.key,
   });
+  console.log(userData);
+  console.log(res)
 });
 
 // creates a method to delete previously made notes based on their unique id.
