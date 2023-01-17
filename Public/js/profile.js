@@ -1,11 +1,10 @@
 // modal
 var modal = document.getElementById("mymodal");
 var span = document.getElementsByClassName("close")[0];
-var btn = document.getElementById("myBtn");
 
 
-btn.onclick = function() {
-  modal.style.display = "block";
+function showModal() { 
+  modal.style.display="block";
 }
 
 span.onclick = function() {
@@ -41,7 +40,7 @@ const newUploadHandler = async (event) => {
       .then((response) => { 
 
         if (response.ok) {
-          
+
           showModal();
           document.replace('/')
         } else {
@@ -63,7 +62,7 @@ const delButtonHandler = async (event) => {
 
     if (response.ok) {
       showModal()
-      document.location.replace('/profile');
+      document.replace('/profile');
     } else {
       alert('Failed to delete upload');
     }
