@@ -2,6 +2,9 @@
 var modal = document.getElementById('mymodal');
 var span = document.getElementsByClassName('close')[0];
 
+function refreshPage() {
+  window.location.reload();
+};
 
 function showModal() {
   modal.style.display = 'block';
@@ -9,11 +12,13 @@ function showModal() {
 
 span.onclick = function () {
   modal.style.display = 'none';
+  refreshPage();
 };
 
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = 'none';
+    refreshPage();
   }
 };
 
