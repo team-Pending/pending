@@ -2,20 +2,19 @@
 var modal = document.getElementById("mymodal");
 var span = document.getElementsByClassName("close")[0];
 
+btn.onclick = function () {
+  modal.style.display = 'block';
+};
 
 function showModal() { 
   modal.style.display="block";
 }
 
-span.onclick = function() {
+window.onclick = function (event) {
+  if (event.target == modal) {
     modal.style.display = 'none';
-}
-
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = 'none';
-    }
-}
+  }
+};
 
 const newUploadHandler = async (event) => {
   event.preventDefault();
@@ -32,17 +31,15 @@ const newUploadHandler = async (event) => {
     };
 
     options.body = form;
-    
+
     // local for testing, this branch should be on local by default
     fetch('http://localhost:3001/api/image', options)
-    // heroku for live
-    // fetch('https://mediaphile.herokuapp.com/api/image', options)
-      .then((response) => { 
-
+      // heroku for live
+      // fetch('https://mediaphile.herokuapp.com/api/image', options)
+      .then((response) => {
         if (response.ok) {
-
           showModal();
-          document.replace('/')
+          document.replace('/');
         } else {
           alert('Failed to create upload');
         }
@@ -61,15 +58,20 @@ const delButtonHandler = async (event) => {
     });
 
     if (response.ok) {
-      showModal()
-      document.replace('/profile');
+      showModal();
+      document.location.replace('/');
     } else {
       alert('Failed to delete upload');
     }
   }
 };
-
 const newUploadFormElement = document.querySelector('.new-upload-form');
 newUploadFormElement.addEventListener('submit', newUploadHandler);
-const delButtonHandlerElement = document.querySelector('.btn-danger');
-delButtonHandlerElement.addEventListener('click', delButtonHandler);
+
+document.body.addEventListener('click', function (event) {
+  console.log('this button did not register correctly');
+  if (event.target.className === 'btn btn-sm btn-danger') {
+    console.log('you clicked a button');
+    delButtonHandler(event);
+  }
+});
