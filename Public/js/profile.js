@@ -2,19 +2,25 @@
 var modal = document.getElementById("mymodal");
 var span = document.getElementsByClassName("close");
 
+function refreshPage() {
+  window.location.reload();
+};
+
 function showModal() {
     modal.style.display="block";
-}
+};
 
 span.onclick = function() {
     modal.style.display = 'none';
-}
+    refreshPage();
+};
 
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = 'none';
+        refreshPage();
     }
-}
+};
 
 const newUploadHandler = async (event) => {
   event.preventDefault();
@@ -37,9 +43,7 @@ const newUploadHandler = async (event) => {
     // heroku for live this branch should be on heroku by default
     fetch('https://mediaphile.herokuapp.com/api/image', options)
       .then((response) => { 
-
-        if (response.ok) {
-          
+        if (response.ok) {          
           showModal();
           document.replace('/')
         } else {
@@ -67,8 +71,13 @@ const delButtonHandler = async (event) => {
     }
   }
 };
-
 const newUploadFormElement = document.querySelector('.new-upload-form');
 newUploadFormElement.addEventListener('submit', newUploadHandler);
-const delButtonHandlerElement = document.querySelector('.btn-danger');
-delButtonHandlerElement.addEventListener('click', delButtonHandler);
+
+document.body.addEventListener('click', function (event) {
+  console.log('this button did not register correctly');
+  if (event.target.className === 'btn btn-sm btn-danger') {
+    console.log('you clicked a button');
+    delButtonHandler(event);
+  }
+});
