@@ -10,9 +10,9 @@ const uploadImageHandler = async (event) => {
   options.body = form;
 
     // local for testing, this branch should be on local by default
-    fetch('http://localhost:3001/api/image', options)
+    // fetch('http://localhost:3001/api/image', options)
     // heroku for live
-    // fetch('https://mediaphile.herokuapp.com/api/image', options)
+    fetch('https://mediaphile.herokuapp.com/api/image', options)
     .then((response) => console.log(response))
     .catch((err) => console.error(err));
 };
